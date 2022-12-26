@@ -97,7 +97,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)SDL_LIB\SDL2_ttf-2.0.14\lib\x64;$(SolutionDir)SDL_LIB\SDL2_image-2.0.3\lib\x64;$(SolutionDir)SDL_LIB\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2_image.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,6 +154,9 @@
     <Image Include="..\..\..\..\Downloads\grass.png" />
     <Image Include="..\..\..\..\Downloads\wall.png" />
     <Image Include="assets\Player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\Map1.TXT" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

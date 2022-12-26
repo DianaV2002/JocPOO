@@ -3,7 +3,7 @@
 #include <SDL.h>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 800;
+const int SCREEN_WIDTH = 800; 
 const int SCREEN_HEIGHT = 640;
 
 int main(int argc, char* args[])

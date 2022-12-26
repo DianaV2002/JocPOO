@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "SDL.h"
+
 
 enum KEY_p{ UP, RIGHT, DOWN, LEFT, DEFAULT};
 
@@ -26,5 +26,7 @@ public:
 	void draw() override;//deseneaza noua pozitie
 
 	void handleEvent(SDL_Event& event);//seteaza directia
+
+	bool checkCollision(const SDL_Rect& obj);
 
 };

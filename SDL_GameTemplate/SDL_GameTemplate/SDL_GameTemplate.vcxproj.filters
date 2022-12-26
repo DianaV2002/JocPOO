@@ -68,4 +68,9 @@
       <UniqueIdentifier>{56485f79-b858-4702-8df0-9d493aa46e70}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\Map1.TXT">
+      <Filter>assets</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

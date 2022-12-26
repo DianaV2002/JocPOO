@@ -2,6 +2,15 @@
 #include "TextureManager.h"
 #include <SDL.h>
 
+using namespace std;
+
+// Initializare variabile statice
+
+int** Map:: map;
+int Map:: lin;
+int Map:: col;
+
+/*
 int lvl1[20][25] = {
 	{0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -27,14 +36,14 @@ int lvl1[20][25] = {
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 };
-
+*/
 Map::Map(SDL_Renderer* renderer)
 {
 	this->renderer = renderer;
 	grass = TextureManager::LoadTexture("assets/grass.png", renderer);
 	wall= TextureManager::LoadTexture("assets/wall.png", renderer);
 
-	LoadMap(lvl1);
+	LoadMap((char*)"assets/Map1.txt");
 
 	src.x = 0;
 	src.y = 0;
@@ -52,23 +61,46 @@ Map::~Map()
 
 }
 
-void Map::LoadMap(int arr[20][25])
+void Map::LoadMap(char* filePath)
 {
-	for (int row = 0; row < 20; row++)
+	// Fisier
+	// Exceptie
+	ifstream file;
+	try
 	{
-		for (int column = 0; column < 25; column++)
+		file.open(filePath);
+		if (!file)
+			throw "Nu exista fisierul pentru harta/n";
+
+	}
+	catch(const char* err)
+	{
+		cout << err;
+	}
+
+	file >> lin >> col;
+
+	map = new int* [lin];
+	for (int i = 0; i < lin; ++i)
+		map[i] = new int[col];
+
+	for (int row = 0; row < lin; row++)
+	{
+		for (int column = 0; column < col; column++)
 		{
-			map[row][column] = arr[row][column];
+			file >> map[row][column];
 		}
 	}
+
+	file.close();
 }
 
 void Map::DrawMap()
 {
 	int type = 0;
-	for (int row = 0; row < 20; row++)
+	for (int row = 0; row < lin; row++)
 	{
-		for (int column = 0; column < 25; column++)
+		for (int column = 0; column < col; column++)
 		{
 			type = map[row][column];
 
@@ -92,4 +124,24 @@ void Map::DrawMap()
 			}
 		}
 	}
+}
+
+int Map::GetLin()
+{
+	return lin;
+}
+
+int Map::GetCol()
+{
+	return col;
+}
+
+int** Map::GetMap()
+{
+	return map;
+}
+
+SDL_Rect convertTileToRect(int x, int y, int w, int h)
+{
+	return SDL_Rect{ x, y, w, h };
 }

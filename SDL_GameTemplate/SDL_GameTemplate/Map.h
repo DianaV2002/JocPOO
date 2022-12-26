@@ -1,5 +1,9 @@
 #pragma once
+#include <fstream>
+#include <iostream>
 #include <SDL_image.h>
+
+SDL_Rect convertTileToRect(int x, int y, int w, int h);
 
 class Map
 {
@@ -7,15 +11,19 @@ public:
 	Map(SDL_Renderer* renderer);
 	~Map();
 
-	void LoadMap(int arr[20][25]);
+	void LoadMap(char* filePath);
 	void DrawMap();
+	static int GetLin();
+	static int GetCol();
+	static int** GetMap();
 
 private:
 	SDL_Renderer* renderer;
 	SDL_Rect src, dest;
 	SDL_Texture* grass;
-	SDL_Texture* water;
 	SDL_Texture* wall;
 
-	int map[20][25];
+	static int** map;
+	static int lin;
+	static int col;
 };
