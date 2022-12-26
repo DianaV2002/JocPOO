@@ -62,6 +62,7 @@ void Game::handleEvents()
 		break;
 	}
 	default:
+		player->handleEvent(event);
 		break;
 	}
 }
