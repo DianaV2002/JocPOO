@@ -2,10 +2,13 @@
 #include <iostream>
 #include "Map.h"
 #include "Player.h"
+#include "Enemy.h"
 
 Map* map;
 
 Player *player;
+
+Enemy* enemy;
 
 Game::Game(): isRunning(false), window(nullptr), renderer(nullptr)
 {
@@ -49,6 +52,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	map = new Map(renderer);
    player = new Player ("assets/Walk_9.png", renderer);
    player->init();
+   enemy = new Enemy("assets/Player.png", renderer);
+   enemy->init();
 }
 
 void Game::handleEvents()
@@ -66,11 +71,14 @@ void Game::handleEvents()
 		break;
 	}
 }
+//obiecte care se actualizeaza(bullet, life)
 void Game::update() const
 {
 	player->update();
+	enemy->update();
 }
 
+//obiecte de afisat
 void Game::render() const
 {
 	SDL_RenderClear(renderer);
@@ -78,6 +86,8 @@ void Game::render() const
 	map->DrawMap();
 
 	player->draw();
+	enemy->draw();
+
 	SDL_RenderPresent(renderer);
 }
 

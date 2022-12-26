@@ -71,6 +71,10 @@ void Player::update()
 		destRect.x = oldX;
 		destRect.y = oldY;
 	}
+
+
+	// De adaugat coliziune cu vectorul de inamici. Daca atingi un inamic se reseteaza x si y playerului la pozitia de start(32,32)
+
 }
 
 
