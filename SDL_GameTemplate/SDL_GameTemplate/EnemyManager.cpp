@@ -12,7 +12,7 @@ void EnemyManager::init(int lvl, Player* player)
 	target = player;
 	if (lvl == 1)
 	{
-		this->n = 8;
+		this->n = 4;
 		allEnemies = new Enemy*[n];
 		for (int i = 0; i < n; i++)
 		{
@@ -21,10 +21,6 @@ void EnemyManager::init(int lvl, Player* player)
 		}
 
 		allEnemies[0]->init(160,160);
-		allEnemies[4]->init(160, 160 + 32);
-		allEnemies[5]->init(160, 160 + 32 * 2);
-		allEnemies[6]->init(160, 160 + 32 * 3);
-		allEnemies[7]->init(160, 160 + 32 * 3);
 		allEnemies[1]->init(224, 224);
 		allEnemies[2]->init(320, 320);
 		allEnemies[3]->init(352, 352);
