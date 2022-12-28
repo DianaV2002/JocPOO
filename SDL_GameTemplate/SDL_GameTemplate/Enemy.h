@@ -1,27 +1,40 @@
 #pragma once
 #include "Component.h"
 #include "SDL.h"
-
-enum Direction { E_UP, E_RIGHT, E_DOWN, E_LEFT, E_DEFAULT };
+#include "Player.h"
 
 class Enemy : public Component
 {
 	SDL_Texture* texture{};
 	SDL_Renderer* renderer{};
 	SDL_Rect srcRect{}, destRect{};
-	Direction direction;
+	KEY_p direction;
 	int xspeed, yspeed;
+	Player* target;
+
 public:
 	Enemy() = default;
 	Enemy(const char* path, SDL_Renderer* renderer);
 
 	void setTex(const char* path);
 
-	void init() override;
+	void init(int x, int y) override;
 
 	void update() override;
 
 	void draw() override;
 
 	bool checkCollision(const SDL_Rect& obj);
+
+	void setTarget(Player* target);
+
+	void followTarget();
+
+	bool isWallBetween(int playerRow, int playerCol, int enemyRow, int enemyCol);
+	
+	bool playerCollision();
+
+	SDL_Rect getEnemyPos();
+
+	~Enemy();
 };

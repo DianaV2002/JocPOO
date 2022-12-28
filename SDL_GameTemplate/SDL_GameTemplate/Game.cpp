@@ -2,13 +2,18 @@
 #include <iostream>
 #include "Map.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
+#include "Health.h"
 
 Map* map;
 
 Player *player;
 
-Enemy* enemy;
+EnemyManager* enemyManager;
+
+BulletManager* bulletManager;
+
+Health* health;
 
 Game::Game(): isRunning(false), window(nullptr), renderer(nullptr)
 {
@@ -48,12 +53,19 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 		isRunning = false;
 	}
-
+	int lvl = 1;
 	map = new Map(renderer);
-   player = new Player ("assets/Walk_9.png", renderer);
-   player->init();
-   enemy = new Enemy("assets/Player.png", renderer);
-   enemy->init();
+	player = new Player ("assets/plantPlayer.png", renderer);
+	player->init(32,32);
+	health = new Health("assets/health.png", renderer);
+	health->setPlayer(player);
+	health->init(0,0);
+	enemyManager = new EnemyManager("assets/zombie.png", renderer);
+	enemyManager->init(lvl, player);
+	bulletManager = new BulletManager("assets/bullet.png", renderer);
+	player->setBulletManager(bulletManager);
+	enemyManager->setBulletManager(bulletManager);
+
 }
 
 void Game::handleEvents()
@@ -74,8 +86,13 @@ void Game::handleEvents()
 //obiecte care se actualizeaza(bullet, life)
 void Game::update() const
 {
-	player->update();
-	enemy->update();
+	if (player->isAlive())
+		player->update();
+	else
+		player->setTex("assets/deadPlayer.png");
+	health->update();
+	enemyManager->update();
+	bulletManager->update();
 }
 
 //obiecte de afisat
@@ -86,7 +103,9 @@ void Game::render() const
 	map->DrawMap();
 
 	player->draw();
-	enemy->draw();
+	health->draw();
+	enemyManager->draw();
+	bulletManager->draw();
 
 	SDL_RenderPresent(renderer);
 }

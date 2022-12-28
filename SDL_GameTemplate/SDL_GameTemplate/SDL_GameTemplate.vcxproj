@@ -133,27 +133,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Downloads\grass.png" />
-    <Image Include="..\..\..\..\Downloads\wall.png" />
+    <Image Include="..\..\..\..\..\Downloads\plantPlayer.png" />
+    <Image Include="..\..\..\..\..\Downloads\zombie.png" />
+    <Image Include="assets\bullet.png" />
+    <Image Include="assets\deadPlayer.png" />
+    <Image Include="assets\grass.png" />
+    <Image Include="assets\health.png" />
     <Image Include="assets\Player.png" />
+    <Image Include="assets\wall.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\Map1.TXT" />

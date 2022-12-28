@@ -22,6 +22,18 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -45,15 +57,42 @@
     <ClInclude Include="Enemy.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Player.png">
       <Filter>assets</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\wall.png">
+    <Image Include="..\..\..\..\..\Downloads\plantPlayer.png">
       <Filter>assets</Filter>
     </Image>
-    <Image Include="..\..\..\..\Downloads\grass.png">
+    <Image Include="..\..\..\..\..\Downloads\zombie.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\grass.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\wall.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\deadPlayer.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\bullet.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\health.png">
       <Filter>assets</Filter>
     </Image>
   </ItemGroup>

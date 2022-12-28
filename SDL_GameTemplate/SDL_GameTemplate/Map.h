@@ -22,6 +22,7 @@ private:
 	SDL_Rect src, dest;
 	SDL_Texture* grass;
 	SDL_Texture* wall;
+	SDL_Texture* tree;
 
 	static int** map;
 	static int lin;

@@ -1,8 +1,7 @@
 #pragma once
+class BulletManager;
 #include "Component.h"
-
-
-enum KEY_p{ UP, RIGHT, DOWN, LEFT, DEFAULT};
+#include "BulletManager.h"
 
 class Player : public Component
 {
@@ -11,15 +10,20 @@ class Player : public Component
 	SDL_Rect srcRect{}, destRect{};
 	KEY_p direction;
 	int xspeed, yspeed;
-	//void setDirection(const KEY_p&);
-
+	int health;
+	BulletManager* bulletManager;
+	int bulletCooldown = 60; // fps e 60, deci 1 bullet pe secunda
+	int timeSinceLastBullet;
+	int directionTimeout = 15; // daca nu s-a schimbat directia in ultimele 15 frame-uri(0.25 secunde), atunci directia implicita va fi dreapta 
+	int timeSinceLastDirectionChange;
+	KEY_p lastDirection;
 public:
    Player() = default;
    Player(const char* path, SDL_Renderer* renderer);
 
 	void setTex(const char* path);
 
-	void init() override;
+	void init(int x, int y) override;
 
 	void update() override;//aici se face miscarea
 
@@ -29,4 +33,15 @@ public:
 
 	bool checkCollision(const SDL_Rect& obj);
 
+    KEY_p getPlayerDirection();
+
+	SDL_Rect getPlayerPos();
+
+	void loseHealth();
+
+	bool isAlive();
+
+	void setBulletManager(BulletManager* bulletManager);
+
+	int getHealth();
 };

@@ -3,8 +3,9 @@
 #include "TextureManager.h"
 #include <iostream>
 
-using namespace std;
 
+using namespace std;
+//Vector de inamici-enemy manager cu init, update, draw, 
 Enemy::Enemy(const char* path, SDL_Renderer* renderer) : renderer(renderer)
 {
 	setTex(path);
@@ -15,18 +16,30 @@ void Enemy::setTex(const char* path)
 	texture = TextureManager::LoadTexture(path, renderer);
 }
 
-void Enemy::init()
+// parametrii x si y de inceput
+void Enemy::setTarget(Player* target)
+{
+	this->target = target;
+}
+
+// TODO: speed ca parametru pt lvl
+void Enemy::init(int x, int y)
 {
 	srcRect.x = srcRect.y = 0;
 	srcRect.w = srcRect.h = 32;
 	destRect.w = destRect.h = 32;
-	destRect.x = destRect.y = 160;
-	xspeed = yspeed = 4;
-	direction = E_RIGHT;
+	destRect.x = x;
+	destRect.y = y;
+	xspeed = yspeed = 2;
+	direction = RIGHT;
+
 }
 
 void Enemy::update()
 {
+
+	followTarget();
+
 	// y creste in jos
 	int** map = Map::GetMap();
 	int lin = Map::GetLin();
@@ -37,19 +50,19 @@ void Enemy::update()
 
 	switch (direction)
 	{
-	case E_UP:
+	case UP:
 		destRect.y -= yspeed;
 		break;
-	case E_DOWN:
+	case DOWN:
 		destRect.y += yspeed;
 		break;
-	case E_RIGHT:
+	case RIGHT:
 		destRect.x += xspeed;
 		break;
-	case E_LEFT:
+	case LEFT:
 		destRect.x -= xspeed;
 		break;
-	case E_DEFAULT:
+	case DEFAULT:
 		break;
 	}
 
@@ -64,6 +77,8 @@ void Enemy::update()
 				isCollision = checkCollision(r);
 			}
 
+	// de adaugat coliziune cu monstrii din vectorul de inamici ce se afla in clasa EnemyManager
+
 	if (isCollision == true)
 	{
 		destRect.x = oldX;
@@ -72,16 +87,16 @@ void Enemy::update()
 		switch (num) 
 		{
 		case 0:
-			direction = E_UP;
+			direction = UP;
 			break;
 		case 1:
-			direction = E_RIGHT;
+			direction = RIGHT;
 			break;
 		case 2:
-			direction = E_LEFT;
+			direction = LEFT;
 			break;
 		case 3:
-			direction = E_DOWN;
+			direction = DOWN;
 			break;
 		}
 	}
@@ -101,4 +116,60 @@ bool Enemy::checkCollision(const SDL_Rect& obj)
 	if ((permissiveObject.x >= enemy.x + enemy.w) || (permissiveObject.x + permissiveObject.w <= enemy.x) || (permissiveObject.y >= enemy.y + enemy.h) || (permissiveObject.y + permissiveObject.h <= enemy.y))
 		return false;
 	return true;
+}
+bool Enemy::isWallBetween(int playerRow, int playerCol, int enemyRow, int enemyCol)
+{
+	int** map = Map::GetMap();
+	if (playerRow == enemyRow)
+	{
+		int minim = min(playerCol, enemyCol);
+		int maxim = max(playerCol, enemyCol);
+		for (int column = minim + 1; column < maxim; column++)
+			if (map[playerRow][column] == 1)
+				return 1;
+	}
+	if (playerCol == enemyCol)
+	{
+		int minim = min(playerRow, enemyRow);
+		int maxim = max(playerRow, enemyRow);
+		for (int row = minim + 1; row < maxim; row++)
+			if (map[row][playerCol] == 1)
+				return 1;
+	}
+	return 0;
+}
+void Enemy::followTarget()
+{
+	//player-stanga, enemy dreapta pe aceeasi linie
+	int playerRow = target->getPlayerPos().y / 32;
+    int playerCol= target->getPlayerPos().x / 32;
+	int enemyRow = this->destRect.y / 32;
+	int enemyCol= this->destRect.x / 32;
+	if (playerRow == enemyRow)
+	{
+		if (playerCol < enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player in stanga
+			direction = LEFT;
+		else if (playerCol > enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
+			direction = RIGHT;
+	}
+	if (playerCol == enemyCol)
+	{
+		if (playerRow < enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player sus
+			direction = UP;
+		else if (playerRow > enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
+			direction = DOWN;
+	}
+
+}
+bool Enemy::playerCollision()
+{
+	return checkCollision(target->getPlayerPos());
+}
+Enemy::~Enemy()
+{
+
+}
+SDL_Rect Enemy::getEnemyPos()
+{
+	return destRect;
 }

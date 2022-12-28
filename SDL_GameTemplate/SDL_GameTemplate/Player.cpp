@@ -15,19 +15,37 @@ void Player::setTex(const char* path)
    texture = TextureManager::LoadTexture(path, renderer);
 }
 
-void Player::init()
+void Player::init(int x, int y)
 {
    srcRect.x = srcRect.y = 0;
    srcRect.w = srcRect.h = 32;
 
-   destRect.x = destRect.y = 32;
+   destRect.x = x;
+   destRect.y = y;
    destRect.w = destRect.h = 32;
    xspeed = yspeed = 2;
    direction = DEFAULT;
+   health = 3;
+   lastDirection = RIGHT;
+
+   timeSinceLastBullet = 61; // pentru a putea da glontul initial
 }
 
 void Player::update()
 {
+	timeSinceLastDirectionChange++;
+	if (timeSinceLastDirectionChange > directionTimeout)
+	{
+		lastDirection = RIGHT;
+		timeSinceLastDirectionChange = 0;
+	}
+	else
+		if (direction != DEFAULT)
+			lastDirection = direction;
+	
+	timeSinceLastBullet++;
+
+
 	// y creste in jos
 	int** map = Map::GetMap();
 	int lin = Map::GetLin();
@@ -58,7 +76,7 @@ void Player::update()
 	bool isCollision = false;
 	for(int row = 0; row < lin && isCollision == false; row++)
 		for (int column = 0; column < col && isCollision == false; column++)
-			if(map[row][column] == 1)
+			if(map[row][column] == 1|| map[row][column] == 2)
 			{
 				SDL_Rect r = convertTileToRect(column * 32, row * 32, 32,32);
 				 //cout << r.x << " " << r.y << " " << r.w << " " << r.h << '\n';
@@ -74,7 +92,7 @@ void Player::update()
 
 
 	// De adaugat coliziune cu vectorul de inamici. Daca atingi un inamic se reseteaza x si y playerului la pozitia de start(32,32)
-
+	
 }
 
 
@@ -108,7 +126,14 @@ void Player::handleEvent(SDL_Event& event)
 		case SDLK_LEFT:
 			direction = LEFT;
 			break;
-		
+		case SDLK_SPACE:
+			std::cout << "Dau bullet\n";
+			if (timeSinceLastBullet > bulletCooldown) // daca a trecut timpul de cooldown dau un nou glont si resetez timpul de cooldown la 0
+			{
+				bulletManager->addBullet(destRect.x, destRect.y, lastDirection);
+				timeSinceLastBullet = 0;
+			}
+			break;
 		}
 	}
 
@@ -127,4 +152,30 @@ bool Player::checkCollision(const SDL_Rect& obj)
 	if ((permissiveObject.x >= player.x + player.w) || (permissiveObject.x + permissiveObject.w <= player.x) || (permissiveObject.y >= player.y + player.h) || (permissiveObject.y+ permissiveObject.h <= player.y))
 		return false;
 	return true;
+}
+KEY_p Player::getPlayerDirection()
+{
+	return direction;
+}
+SDL_Rect Player::getPlayerPos()
+{
+	return destRect;
+}
+void Player::loseHealth()
+{
+	this->destRect.x = this->destRect.y = 32;
+	health--;
+
+}
+bool Player::isAlive()
+{
+	return health != 0;
+}
+void Player::setBulletManager(BulletManager* bulletManager)
+{
+	this->bulletManager = bulletManager;
+}
+int Player::getHealth()
+{
+	return health;
 }
