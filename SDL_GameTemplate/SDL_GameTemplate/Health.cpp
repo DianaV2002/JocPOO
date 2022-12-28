@@ -23,13 +23,13 @@ void Health::init(int x, int y)
 
 void Health::update()
 {
-	std::cout << "Ma updatez\n";
+	
 	health = player->getHealth();
 }
 
 void Health::draw()
 {
-	std::cout << "Ma desesnez de " << health << "ori\n";
+	
 	SDL_Rect** destRects = new SDL_Rect*[health];
 	for (int i = 0; i < health; i++)
 	{

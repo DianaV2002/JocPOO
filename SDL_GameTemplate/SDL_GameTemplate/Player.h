@@ -12,7 +12,7 @@ class Player : public Component
 	int xspeed, yspeed;
 	int health;
 	BulletManager* bulletManager;
-	int bulletCooldown = 60; // fps e 60, deci 1 bullet pe secunda
+	int bulletCooldown = 30; // fps e 60, deci 1 bullet pe secunda
 	int timeSinceLastBullet;
 	int directionTimeout = 15; // daca nu s-a schimbat directia in ultimele 15 frame-uri(0.25 secunde), atunci directia implicita va fi dreapta 
 	int timeSinceLastDirectionChange;

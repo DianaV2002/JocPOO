@@ -43,6 +43,7 @@ Map::Map(SDL_Renderer* renderer)
 	grass = TextureManager::LoadTexture("assets/grass.png", renderer);
 	wall= TextureManager::LoadTexture("assets/wall.png", renderer);
 	tree= TextureManager::LoadTexture("assets/tree.png", renderer);
+	flowers = TextureManager::LoadTexture("assets/flowers.png", renderer);
 	LoadMap((char*)"assets/Map1.txt");
 
 	src.x = 0;
@@ -120,7 +121,7 @@ void Map::DrawMap()
 				break;
 			}
 			case 2:
-				TextureManager::Draw(tree, src, dest, renderer);
+				TextureManager::Draw(flowers, src, dest, renderer);
 				break;
 			default:
 				break;

@@ -101,7 +101,6 @@ void Game::render() const
 	SDL_RenderClear(renderer);
 	// this is where we would add stuff to render
 	map->DrawMap();
-
 	player->draw();
 	health->draw();
 	enemyManager->draw();

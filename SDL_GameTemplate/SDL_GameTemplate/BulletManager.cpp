@@ -14,7 +14,7 @@ void BulletManager::addBullet(int x, int y, KEY_p direction)
 	newBullet->init(x, y);
 	newBullet->setDirection(direction);
     allBullets[n++] = newBullet;
-	std::cout << "S-a adaugat un bullet\n";
+	//std::cout << "S-a adaugat un bullet\n";
 }
 
 void BulletManager::update()

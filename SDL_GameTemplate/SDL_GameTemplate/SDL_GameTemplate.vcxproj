@@ -151,6 +151,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="FinalEnemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Health.h" />
@@ -163,6 +164,7 @@
     <Image Include="..\..\..\..\..\Downloads\zombie.png" />
     <Image Include="assets\bullet.png" />
     <Image Include="assets\deadPlayer.png" />
+    <Image Include="assets\flowers.png" />
     <Image Include="assets\grass.png" />
     <Image Include="assets\health.png" />
     <Image Include="assets\Player.png" />

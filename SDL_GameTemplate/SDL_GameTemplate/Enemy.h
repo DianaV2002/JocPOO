@@ -7,7 +7,7 @@ class Enemy : public Component
 {
 	SDL_Texture* texture{};
 	SDL_Renderer* renderer{};
-	SDL_Rect srcRect{}, destRect{};
+	SDL_Rect srcRect{}, destRect{}, hitbox{};
 	KEY_p direction;
 	int xspeed, yspeed;
 	Player* target;
@@ -15,7 +15,7 @@ class Enemy : public Component
 public:
 	Enemy() = default;
 	Enemy(const char* path, SDL_Renderer* renderer);
-
+	SDL_Rect getHitbox();
 	void setTex(const char* path);
 
 	void init(int x, int y) override;

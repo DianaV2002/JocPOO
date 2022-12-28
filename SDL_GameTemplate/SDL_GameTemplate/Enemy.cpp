@@ -25,6 +25,7 @@ void Enemy::setTarget(Player* target)
 // TODO: speed ca parametru pt lvl
 void Enemy::init(int x, int y)
 {
+	int a = 5; //indice de permisivitate
 	srcRect.x = srcRect.y = 0;
 	srcRect.w = srcRect.h = 32;
 	destRect.w = destRect.h = 32;
@@ -32,6 +33,11 @@ void Enemy::init(int x, int y)
 	destRect.y = y;
 	xspeed = yspeed = 2;
 	direction = RIGHT;
+
+	hitbox.x = destRect.x + a;
+	hitbox.y = destRect.y + a;
+	hitbox.w = destRect.w - 2 * a;
+	hitbox.h = destRect.h - 2 * a;
 
 }
 
@@ -138,26 +144,56 @@ bool Enemy::isWallBetween(int playerRow, int playerCol, int enemyRow, int enemyC
 	}
 	return 0;
 }
+
 void Enemy::followTarget()
 {
+	
 	//player-stanga, enemy dreapta pe aceeasi linie
-	int playerRow = target->getPlayerPos().y / 32;
-    int playerCol= target->getPlayerPos().x / 32;
-	int enemyRow = this->destRect.y / 32;
-	int enemyCol= this->destRect.x / 32;
-	if (playerRow == enemyRow)
+	int playerRow = (target->getPlayerPos().y + target -> getPlayerPos().h / 2)/ 32;
+    int playerCol= (target->getPlayerPos().x + target->getPlayerPos().h / 2) / 32;
+
+	int a = 2;
+	int enemyTop = (destRect.y + a) / 32;
+	int enemyBottom = (destRect.y + destRect.h - 2 * a) / 32;
+
+	int enemyLeft = (destRect.x + a)/ 32;
+	int enemyRight = (destRect.x + destRect.w - 2 * a) / 32;
+
+	// centre enemy
+	int enemyRow = (destRect.y + destRect.h / 2) / 32;
+	int enemyCol = (destRect.x + destRect.w / 2 ) / 32;
+
+	// Explicatie:
+	// Daca top-ul inamicului si bottom-ul inamicului sunt pe aceeasi linie cu centrul playerului, atunci il urmaresc
+	// Daca left-ul inamicului si right-ul inamicului sunt pe aceeasi coloana cu centrul playerului, atunci il urmaresc
+	if (playerRow == enemyTop && playerRow == enemyBottom)
 	{
+		
 		if (playerCol < enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player in stanga
+		{
+			std::cout << "TE URMARESC din dreapta\n";
 			direction = LEFT;
+		}
 		else if (playerCol > enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
+		{
+			std::cout << "TE URMARESC din stanga\n";
 			direction = RIGHT;
+		}
+			
 	}
-	if (playerCol == enemyCol)
+	if (playerCol == enemyLeft && playerCol == enemyRight)
 	{
 		if (playerRow < enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player sus
+		{
+			std::cout << "TE URMARESC de jos\n";
 			direction = UP;
+		}
 		else if (playerRow > enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
+		{
+			std::cout << "TE URMARESC de sus\n";
 			direction = DOWN;
+		}
+			
 	}
 
 }

@@ -23,6 +23,7 @@ private:
 	SDL_Texture* grass;
 	SDL_Texture* wall;
 	SDL_Texture* tree;
+	SDL_Texture* flowers;
 
 	static int** map;
 	static int lin;
