@@ -1,8 +1,9 @@
 #pragma once
 class EnemyManager;
+class Enemy;
 #include "Component.h"
 #include "TextureManager.h"
-#include "EnemyManager.h"
+#include "Map.h"
 
 class Bullet :public Component
 {
@@ -12,7 +13,7 @@ class Bullet :public Component
 	KEY_p direction;
 	int speed;
 	EnemyManager* enemyManager;
-	
+	Map* map;
 public:
 	 Bullet() = default;
 	 Bullet(const char* path, SDL_Renderer * renderer);
@@ -24,4 +25,5 @@ public:
 	 bool checkCollision(const SDL_Rect& r) override;
 	 bool wallCollision();
 	 void setEnemies(EnemyManager* enemyManager);
+	 void setMap(Map* map);
 };

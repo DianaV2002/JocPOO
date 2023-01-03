@@ -135,12 +135,18 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletManager.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="FinalEnemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Health.cpp" />
+    <ClCompile Include="Level1Scene.cpp" />
+    <ClCompile Include="Level2Scene.cpp" />
+    <ClCompile Include="Level3Scene.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainMenuScene.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -148,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
@@ -155,18 +162,28 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Health.h" />
+    <ClInclude Include="Level1Scene.h" />
+    <ClInclude Include="Level2Scene.h" />
+    <ClInclude Include="Level3Scene.h" />
+    <ClInclude Include="MainMenuScene.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\plantPlayer.png" />
     <Image Include="..\..\..\..\..\Downloads\zombie.png" />
+    <Image Include="assets\background.jpg" />
     <Image Include="assets\bullet.png" />
     <Image Include="assets\deadPlayer.png" />
+    <Image Include="assets\easy.png" />
+    <Image Include="assets\exit.png" />
     <Image Include="assets\flowers.png" />
     <Image Include="assets\grass.png" />
+    <Image Include="assets\hard.png" />
     <Image Include="assets\health.png" />
+    <Image Include="assets\medium.png" />
     <Image Include="assets\Player.png" />
     <Image Include="assets\wall.png" />
   </ItemGroup>

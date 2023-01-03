@@ -34,6 +34,24 @@
     <ClCompile Include="Health.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Level1Scene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FinalEnemy.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Level3Scene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2Scene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -72,6 +90,24 @@
     <ClInclude Include="FinalEnemy.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1Scene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2Scene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Level3Scene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Player.png">
@@ -99,6 +135,21 @@
       <Filter>assets</Filter>
     </Image>
     <Image Include="assets\flowers.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\background.jpg">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\easy.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\exit.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\hard.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\medium.png">
       <Filter>assets</Filter>
     </Image>
   </ItemGroup>

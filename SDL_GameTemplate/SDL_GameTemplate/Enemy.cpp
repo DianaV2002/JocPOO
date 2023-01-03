@@ -1,6 +1,5 @@
 #include "Enemy.h"
-#include "Map.h"
-#include "TextureManager.h"
+
 #include <iostream>
 
 
@@ -47,9 +46,10 @@ void Enemy::update()
 	followTarget();
 
 	// y creste in jos
-	int** map = Map::GetMap();
-	int lin = Map::GetLin();
-	int col = Map::GetCol();
+
+	int** map = this -> map -> GetMap();
+	int lin = this->map->GetLin();
+	int col = this -> map ->GetCol();
 
 	int oldX = destRect.x;
 	int oldY = destRect.y;
@@ -125,7 +125,7 @@ bool Enemy::checkCollision(const SDL_Rect& obj)
 }
 bool Enemy::isWallBetween(int playerRow, int playerCol, int enemyRow, int enemyCol)
 {
-	int** map = Map::GetMap();
+	int** map = this -> map -> GetMap();
 	if (playerRow == enemyRow)
 	{
 		int minim = min(playerCol, enemyCol);
@@ -208,4 +208,9 @@ Enemy::~Enemy()
 SDL_Rect Enemy::getEnemyPos()
 {
 	return destRect;
+}
+
+void Enemy::setMap(Map* map)
+{
+	this->map = map;
 }

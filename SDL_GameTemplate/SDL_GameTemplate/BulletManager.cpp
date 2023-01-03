@@ -1,3 +1,4 @@
+class Enemy;
 #include "BulletManager.h"
 #include <iostream>
 
@@ -13,6 +14,7 @@ void BulletManager::addBullet(int x, int y, KEY_p direction)
 	Bullet* newBullet = new Bullet(path, renderer);
 	newBullet->init(x, y);
 	newBullet->setDirection(direction);
+	newBullet->setMap(map);
     allBullets[n++] = newBullet;
 	//std::cout << "S-a adaugat un bullet\n";
 }
@@ -69,4 +71,9 @@ void BulletManager::deleteBullet(int index)
 BulletManager::~BulletManager()
 {
 
+}
+
+void BulletManager::setMap(Map* map)
+{
+	this->map = map;
 }

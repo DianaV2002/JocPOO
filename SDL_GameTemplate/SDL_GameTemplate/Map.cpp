@@ -4,12 +4,6 @@
 
 using namespace std;
 
-// Initializare variabile statice
-
-int** Map:: map;
-int Map:: lin;
-int Map:: col;
-
 /*
 int lvl1[20][25] = {
 	{0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

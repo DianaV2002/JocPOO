@@ -1,5 +1,8 @@
+class Enemy;
+#include "EnemyManager.h"
 #include "Bullet.h"
 #include "Map.h"
+
 Bullet::Bullet(const char* path, SDL_Renderer* renderer) : renderer(renderer)
 {
 	setTex(path);
@@ -62,9 +65,9 @@ bool Bullet::checkCollision(const SDL_Rect& obj)
 }
 bool Bullet::wallCollision()
 {
-	int** map = Map::GetMap();
-	int lin = Map::GetLin();
-	int col = Map::GetCol();
+	int** map = this -> map ->GetMap();
+	int lin = this -> map -> GetLin();
+	int col = this -> map -> GetCol();
 	bool isCollision = false;
 	for (int row = 0; row < lin && isCollision == false; row++)
 		for (int column = 0; column < col && isCollision == false; column++)
@@ -80,4 +83,9 @@ bool Bullet::wallCollision()
 void Bullet::setEnemies(EnemyManager* enemyManager)
 {
 	this->enemyManager = enemyManager;
+}
+
+void Bullet::setMap(Map *map)
+{
+	this->map = map;
 }

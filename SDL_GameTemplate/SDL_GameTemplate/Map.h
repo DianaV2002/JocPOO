@@ -13,9 +13,9 @@ public:
 
 	void LoadMap(char* filePath);
 	void DrawMap();
-	static int GetLin();
-	static int GetCol();
-	static int** GetMap();
+	int GetLin();
+	int GetCol();
+	int** GetMap();
 
 private:
 	SDL_Renderer* renderer;
@@ -25,7 +25,7 @@ private:
 	SDL_Texture* tree;
 	SDL_Texture* flowers;
 
-	static int** map;
-	static int lin;
-	static int col;
+	int** map;
+	int lin;
+	int col;
 };

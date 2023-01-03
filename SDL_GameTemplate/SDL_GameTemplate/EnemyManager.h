@@ -1,15 +1,17 @@
 #pragma once
+class FinalEnemy;
 class Enemy;
 class Player;
-#include "Enemy.h"
-#include "SDL.h"
+#include "FinalEnemy.h"
 
 class EnemyManager  {
 	const char* path;
 	SDL_Renderer* renderer{};
 	Enemy** allEnemies;
+	FinalEnemy* finalEnemy;
 	BulletManager* bulletManager;
 	Player* target;
+	Map* map;
 	int n;
 public:
 	EnemyManager() = default;
@@ -22,6 +24,7 @@ public:
 	Enemy** getAllEnemies();
 	void deleteEnemy(int index);
 	void setBulletManager(BulletManager*);
+	void setMap(Map*);
 	bool bulletCollision(Bullet* bullet, Enemy* enemy);
 	~EnemyManager();
 };

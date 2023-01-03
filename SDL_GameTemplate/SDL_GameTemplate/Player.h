@@ -1,5 +1,6 @@
 #pragma once
 class BulletManager;
+class Enemy;
 #include "Component.h"
 #include "BulletManager.h"
 
@@ -17,6 +18,7 @@ class Player : public Component
 	int directionTimeout = 15; // daca nu s-a schimbat directia in ultimele 15 frame-uri(0.25 secunde), atunci directia implicita va fi dreapta 
 	int timeSinceLastDirectionChange;
 	KEY_p lastDirection;
+	Map* map;
 public:
    Player() = default;
    Player(const char* path, SDL_Renderer* renderer);
@@ -44,4 +46,6 @@ public:
 	void setBulletManager(BulletManager* bulletManager);
 
 	int getHealth();
+
+	void setMap(Map* map);
 };

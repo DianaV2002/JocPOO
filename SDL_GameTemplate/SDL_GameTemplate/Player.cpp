@@ -1,3 +1,4 @@
+class Enemy;
 #include <iostream>
 #include "Player.h"
 #include "Map.h"
@@ -47,9 +48,9 @@ void Player::update()
 
 
 	// y creste in jos
-	int** map = Map::GetMap();
-	int lin = Map::GetLin();
-	int col = Map::GetCol();
+	int** map = this -> map -> GetMap();
+	int lin = this -> map -> GetLin();
+	int col = this -> map -> GetCol();
 
 	int oldX = destRect.x;
 	int oldY = destRect.y;
@@ -178,4 +179,8 @@ void Player::setBulletManager(BulletManager* bulletManager)
 int Player::getHealth()
 {
 	return health;
+}
+void Player::setMap(Map* map)
+{
+	this->map = map;
 }

@@ -4,6 +4,7 @@
 class GameObject
 {
 public:
+	GameObject()=default;
 	GameObject(const char* textureSheet, SDL_Renderer* renderer, int x, int y);
 	~GameObject();
 

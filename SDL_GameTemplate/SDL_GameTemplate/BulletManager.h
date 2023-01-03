@@ -1,5 +1,6 @@
 #pragma once
 class Bullet;
+class Enemy;
 #include "Bullet.h"
 #include "TextureManager.h"
 
@@ -8,6 +9,7 @@ class BulletManager
 	const char* path;
 	SDL_Renderer* renderer{};
 	Bullet** allBullets;
+	Map* map;
 	int n;
 public:
 	BulletManager() = default;
@@ -19,4 +21,5 @@ public:
 	Bullet** getAllBullets();
 	void deleteBullet(int index);
 	~BulletManager();
+	void setMap(Map* map);
 };
