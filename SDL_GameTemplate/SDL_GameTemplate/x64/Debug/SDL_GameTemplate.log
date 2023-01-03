@@ -1,3 +1,4 @@
 ﻿  Level1Scene.cpp
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\Level1Scene.cpp(99,3): warning C4065: switch statement contains 'default' but no 'case' labels
+  Player.cpp
+  Generating Code...
   SDL_GameTemplate.vcxproj -> C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\x64\Debug\SDL_GameTemplate.exe

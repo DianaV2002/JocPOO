@@ -26,7 +26,7 @@ void Bullet::setDirection(KEY_p dir)
 	direction = dir;
 }
 void Bullet::update() {
-	std::cout << "Sunt bullet si ma misc\n";
+	//std::cout << "Sunt bullet si ma misc\n";
 	std::cout << direction << '\n';
 
 	switch (direction)

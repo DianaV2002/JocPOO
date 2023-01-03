@@ -54,7 +54,7 @@ void Player::update()
 
 	int oldX = destRect.x;
 	int oldY = destRect.y;
-
+	
 	switch (direction)
 	{
 	case UP:
@@ -69,7 +69,8 @@ void Player::update()
 	case LEFT:
 		destRect.x -= xspeed;
 		break;
-	case DEFAULT:
+	default:
+		direction = DEFAULT;
 		break;  
     }
 	
@@ -86,7 +87,7 @@ void Player::update()
 
 	if (isCollision == true)
 	{
-		cout << "COLIZIUNE\n\n\n";
+		//cout << "COLIZIUNE\n\n\n";
 		destRect.x = oldX;
 		destRect.y = oldY;
 	}
@@ -128,7 +129,7 @@ void Player::handleEvent(SDL_Event& event)
 			direction = LEFT;
 			break;
 		case SDLK_SPACE:
-			std::cout << "Dau bullet\n";
+			//std::cout << "Dau bullet\n";
 			if (timeSinceLastBullet > bulletCooldown) // daca a trecut timpul de cooldown dau un nou glont si resetez timpul de cooldown la 0
 			{
 				bulletManager->addBullet(destRect.x, destRect.y, lastDirection);
@@ -142,6 +143,8 @@ void Player::handleEvent(SDL_Event& event)
 	{
 		direction = DEFAULT;
 	}
+
+	
 }
 
 bool Player::checkCollision(const SDL_Rect& obj)

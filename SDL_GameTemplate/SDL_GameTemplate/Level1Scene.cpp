@@ -59,10 +59,10 @@ void Level1Scene::update()
 	health->update();
 	//std::cout << "Health update\n";
 	enemyManager->update();
-	std::cout << "Enemy manager update\n";
+	//std::cout << "Enemy manager update\n";
 	bulletManager->update();
 	//std::cout << "Bullet manager update\n";
-	std::cout <<  player->getPlayerPos().x<<" "<< player->getPlayerPos().y << '\n';
+	//std::cout <<  player->getPlayerPos().x<<" "<< player->getPlayerPos().y << '\n';
 }
 
 void Level1Scene::draw()
@@ -74,28 +74,24 @@ void Level1Scene::draw()
 	health->draw();
 	enemyManager->draw();
 	bulletManager->draw();
-	std::cout << "DESEN\n";
+	//std::cout << "DESEN\n";
 	SDL_RenderPresent(renderer);
 }
 
 void Level1Scene::handleEvents(SDL_Event& event)
 {
-	
-	if (event.type == SDL_KEYDOWN)
+	switch (event.key.keysym.sym)
 	{
-		switch (event.key.keysym.sym)
-		{
-		/*case SDLK_ESCAPE:
+		case SDLK_ESCAPE:
 		{
 			Scene* scene = new MainMenuScene(renderer, game);
 			scene->init();
 			game->setScene(scene);
 		}
-		break;*/
+		break;
 
 		default:
 			player->handleEvent(event);
 			break;
-		}
 	}
 }

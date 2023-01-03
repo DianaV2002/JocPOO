@@ -91,7 +91,7 @@ void EnemyManager::update()
 		for (int i = 0; i < n; i++)
 			if (allEnemies[i]->playerCollision())
 			{
-
+				
 				target->loseHealth();
 				deleteEnemy(i);
 			}
@@ -118,12 +118,11 @@ void EnemyManager::update()
 						bulletManager->deleteBullet(j);
 					}
 					*/
-
-
-					if (enemyDead == false)
-						allEnemies[i]->update();
-					std::cout << "Enemy " << i << " updated\n";\
 				}
+
+				if (enemyDead == false)
+					allEnemies[i]->update();
+				//std::cout << "Enemy " << i << " updated\n";
 			}
 	
 	

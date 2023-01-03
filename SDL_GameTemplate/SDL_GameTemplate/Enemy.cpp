@@ -42,7 +42,7 @@ void Enemy::init(int x, int y)
 
 void Enemy::update()
 {
-
+	//std::cout << "Sunt monstru si ma updatez\n";
 	followTarget();
 
 	// y creste in jos
