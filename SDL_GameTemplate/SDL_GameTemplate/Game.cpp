@@ -58,7 +58,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	dest.y = height / 4 - dest.h / 2;
 
 
-	scene = new Level1Scene(renderer, this);
+	scene = new Level3Scene(renderer, this);
 	scene->init();
 	this->setScene(scene);
 }

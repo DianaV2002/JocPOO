@@ -80,16 +80,18 @@ void Level2Scene::draw()
 void Level2Scene::handleEvents(SDL_Event& event)
 {
 
-	if (event.type == SDL_KEYDOWN)
+	switch (event.key.keysym.sym)
 	{
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_ESCAPE:
-			Scene* scene = new MainMenuScene(renderer, game);
-			scene->init();
-			game->setScene(scene);
-			break;
-
-		}
+	case SDLK_ESCAPE:
+	{
+		Scene* scene = new MainMenuScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
 	}
-}
+	break;
+
+	default:
+		player2->handleEvent(event);
+		break;
+	}
+}       

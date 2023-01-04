@@ -110,9 +110,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\Player.png">
-      <Filter>assets</Filter>
-    </Image>
     <Image Include="..\..\..\..\..\Downloads\plantPlayer.png">
       <Filter>assets</Filter>
     </Image>
@@ -134,9 +131,6 @@
     <Image Include="assets\health.png">
       <Filter>assets</Filter>
     </Image>
-    <Image Include="assets\flowers.png">
-      <Filter>assets</Filter>
-    </Image>
     <Image Include="assets\background.jpg">
       <Filter>assets</Filter>
     </Image>
@@ -150,6 +144,9 @@
       <Filter>assets</Filter>
     </Image>
     <Image Include="assets\medium.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\finalZombie.png">
       <Filter>assets</Filter>
     </Image>
   </ItemGroup>

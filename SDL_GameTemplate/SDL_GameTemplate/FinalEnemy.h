@@ -1,8 +1,13 @@
 #pragma once
+class BulletManager;
+class Map;
 #include "Enemy.h"
+#include "BulletManager.h"
 
 class FinalEnemy :public Enemy {
-	
+	BulletManager* bulletManager;
+	Player* target;
+	Map* map;
 	int health = 3;
 public:
 	FinalEnemy() = default;
@@ -10,15 +15,13 @@ public:
 
 	void setTex(const char* path);
 
-	void init(int x, int y) ;
+	void init(int x, int y, Player* player, Map* map, BulletManager* bulletManager) ;
 
 	void update() ;
 
 	void draw();
 
 	bool checkCollision(const SDL_Rect & obj);
-
-	void setTarget(Player * target);
 
 	void followTarget();
 
@@ -28,10 +31,10 @@ public:
 
 	void loseHealth();
 
-	SDL_Rect getEnemyPos();
+	bool bulletCollision(Bullet*);
 
-	~FinalEnemy();
-
-	void setMap(Map * map);
+	void deleteFinalEnemy();
+    
+	~FinalEnemy() = default;
 
 };

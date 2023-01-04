@@ -17,13 +17,9 @@ void FinalEnemy::setTex(const char* path)
 }
 
 // parametrii x si y de inceput
-void FinalEnemy::setTarget(Player* target)
-{
-	this->target = target;
-}
 
 // TODO: speed ca parametru pt lvl
-void FinalEnemy::init(int x, int y)
+void FinalEnemy::init(int x, int y, Player* player, Map* map, BulletManager* bulletManager)
 {
 	int a = 5; //indice de permisivitate
 	srcRect.x = srcRect.y = 0;
@@ -31,13 +27,16 @@ void FinalEnemy::init(int x, int y)
 	destRect.w = destRect.h = 32;
 	destRect.x = x;
 	destRect.y = y;
-	xspeed = yspeed = 2;
+	xspeed = yspeed = 3;
 	direction = RIGHT;
 
 	hitbox.x = destRect.x + a;
 	hitbox.y = destRect.y + a;
 	hitbox.w = destRect.w - 2 * a;
 	hitbox.h = destRect.h - 2 * a;
+	this->target=player;
+	this->map=map;
+	this->bulletManager=bulletManager;
 
 }
 
@@ -107,8 +106,26 @@ void FinalEnemy::update()
 			break;
 		}
 	}
-}
 
+	if (this->playerCollision())
+	{
+		if (health)
+			this->loseHealth();
+		else this->deleteFinalEnemy();
+		target->loseHealth();
+	}
+	for (int j = 0; j < bulletManager->getNumberBullets(); j++)
+	{
+		if (this->bulletCollision(bulletManager->getAllBullets()[j]))
+		{
+			if (health)
+				this->loseHealth();
+			else this->deleteFinalEnemy();
+			bulletManager->deleteBullet(j);
+
+		}
+	}
+}
 
 void FinalEnemy::draw()
 {
@@ -171,29 +188,20 @@ void FinalEnemy::followTarget()
 	{
 
 		if (playerCol < enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player in stanga
-		{
-			std::cout << "TE URMARESC din dreapta\n";
 			direction = LEFT;
-		}
+
 		else if (playerCol > enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
-		{
-			std::cout << "TE URMARESC din stanga\n";
-			direction = RIGHT;
-		}
+	        direction = RIGHT;
 
 	}
 	if (playerCol == enemyLeft && playerCol == enemyRight)
 	{
 		if (playerRow < enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player sus
-		{
-			std::cout << "TE URMARESC de jos\n";
 			direction = UP;
-		}
+		
 		else if (playerRow > enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
-		{
-			std::cout << "TE URMARESC de sus\n";
 			direction = DOWN;
-		}
+
 
 	}
 
@@ -202,23 +210,18 @@ bool FinalEnemy::playerCollision()
 {
 	return checkCollision(target->getPlayerPos());
 }
-FinalEnemy::~FinalEnemy()
-{
-
-}
-SDL_Rect FinalEnemy::getEnemyPos()
-{
-	return destRect;
-}
-
-void FinalEnemy::setMap(Map* map)
-{
-	this->map = map;
-}
-
 void FinalEnemy::loseHealth()
 {
+
 	health--;
+	
+}
+void FinalEnemy::deleteFinalEnemy()
+{
 	if (health == 0)
 		delete this;
+}
+bool FinalEnemy::bulletCollision(Bullet* bullet)
+{
+	return bullet->checkCollision(this->destRect);
 }

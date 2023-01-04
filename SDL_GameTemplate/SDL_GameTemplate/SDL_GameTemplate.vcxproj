@@ -179,12 +179,11 @@
     <Image Include="assets\deadPlayer.png" />
     <Image Include="assets\easy.png" />
     <Image Include="assets\exit.png" />
-    <Image Include="assets\flowers.png" />
+    <Image Include="assets\finalZombie.png" />
     <Image Include="assets\grass.png" />
     <Image Include="assets\hard.png" />
     <Image Include="assets\health.png" />
     <Image Include="assets\medium.png" />
-    <Image Include="assets\Player.png" />
     <Image Include="assets\wall.png" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 #include "MainMenuScene.h"
 #include <iostream>
+#include <SDL_image.h>
 
 MainMenuScene::MainMenuScene(SDL_Renderer* renderer, Game* game)
 {
@@ -9,7 +10,7 @@ MainMenuScene::MainMenuScene(SDL_Renderer* renderer, Game* game)
 void MainMenuScene::init()
 {
 
-	SDL_Rect src, dest;
+	/*SDL_Rect src, dest;
 	src.h = 32;
 	src.w = 32;
 	src.x = 0;
@@ -30,14 +31,28 @@ void MainMenuScene::init()
 	Button* medium = new Button("assets/medium.png", renderer, src, dest);
 	dest.y = height / 2 - dest.h / 2;
 	Button* hard = new Button("assets/hard.png", renderer, src, dest);
+	*/
+			
+			Window = SDL_CreateWindow("Main menu", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		
+			//Initialize PNG loading
+			int imgFlags = IMG_INIT_PNG;
+			if (!(IMG_Init(imgFlags) & imgFlags))
+			{
+				printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+				
+			}
+			else
+			{
+				//Get window surface
+				ScreenSurface = SDL_GetWindowSurface(Window);
+			}
+		
 	
-	background = TextureManager::LoadTexture("assets/background.jpg", renderer);
-	srcRect.x = srcRect.y = 0;
-	srcRect.w = srcRect.h = 32;
-	background_rect.x = 0;   //X COORDINATE
-	background_rect.y = 0;   //Y COORDINATE
-	background_rect.w = 640; 
-	background_rect.h = 800;
+
+	ScreenSurface = this->loadSurface("assets/background.png");
+
+
 }
 void MainMenuScene::update()
 {
@@ -45,8 +60,6 @@ void MainMenuScene::update()
 }
 void MainMenuScene::draw()
 {
-
-	TextureManager::Draw(background, srcRect, background_rect, renderer);
 	easy->Render();
 	medium->Render();
 	hard->Render();
@@ -143,4 +156,30 @@ void MainMenuScene::handleEvents(SDL_Event& event)
 MainMenuScene::~MainMenuScene()
 {
 
+}
+SDL_Surface* MainMenuScene:: loadSurface(const char* path)
+{
+	//The final optimized image
+	SDL_Surface* optimizedSurface = NULL;
+
+	//Load image at specified path
+	SDL_Surface* background = IMG_Load(path);
+	if (background == NULL)
+	{
+		printf("Unable to load image %s! SDL_image Error: %s\n");
+	}
+	else
+	{
+		//Convert surface to screen format
+		optimizedSurface = SDL_ConvertSurface(background, ScreenSurface->format, 0);
+		if (optimizedSurface == NULL)
+		{
+			printf("Unable to optimize image %s! SDL Error: %s\n");
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface(background);
+	}
+
+	return optimizedSurface;
 }

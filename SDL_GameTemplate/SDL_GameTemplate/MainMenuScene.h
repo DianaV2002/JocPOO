@@ -10,12 +10,15 @@ class Button;
 
 class MainMenuScene :public Scene
 {
-	SDL_Texture* background;
+	SDL_Window* Window = NULL;
+	//The surface contained by the window
+	SDL_Surface* ScreenSurface = NULL;
+	//The image we will load and show on the screen
+	SDL_Surface* background = NULL;
 	SDL_Texture* exitButton;
 	SDL_Texture* levelEasy;
 	SDL_Texture* levelMedium;
 	SDL_Texture* levelHard;
-	SDL_Rect background_rect;
 	SDL_Rect srcRect{};
 	Button* easy;
 	Button* medium;
@@ -32,6 +35,7 @@ public:
 	void update();
 	void draw();
 	void setTex();
+	SDL_Surface* loadSurface(const char* path);
 	void handleEvents(SDL_Event& event);
 	~MainMenuScene();
 

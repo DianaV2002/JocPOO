@@ -171,12 +171,12 @@ void Enemy::followTarget()
 		
 		if (playerCol < enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player in stanga
 		{
-			std::cout << "TE URMARESC din dreapta\n";
+	
 			direction = LEFT;
 		}
 		else if (playerCol > enemyCol && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
 		{
-			std::cout << "TE URMARESC din stanga\n";
+		
 			direction = RIGHT;
 		}
 			
@@ -185,12 +185,11 @@ void Enemy::followTarget()
 	{
 		if (playerRow < enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))//player sus
 		{
-			std::cout << "TE URMARESC de jos\n";
+	
 			direction = UP;
 		}
 		else if (playerRow > enemyRow && !isWallBetween(playerRow, playerCol, enemyRow, enemyCol))
 		{
-			std::cout << "TE URMARESC de sus\n";
 			direction = DOWN;
 		}
 			

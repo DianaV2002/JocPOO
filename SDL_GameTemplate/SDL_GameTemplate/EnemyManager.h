@@ -1,14 +1,12 @@
 #pragma once
-class FinalEnemy;
 class Enemy;
 class Player;
-#include "FinalEnemy.h"
+#include "Enemy.h"
 
 class EnemyManager  {
 	const char* path;
 	SDL_Renderer* renderer{};
 	Enemy** allEnemies;
-	FinalEnemy* finalEnemy;
 	BulletManager* bulletManager;
 	Player* target;
 	Map* map;

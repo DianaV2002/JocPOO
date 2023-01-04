@@ -6,6 +6,7 @@ class Enemy;
 #include "Health.h"
 #include "MainMenuScene.h"
 #include <iostream>
+#include "FinalEnemy.h"
 
 Map* map3;
 
@@ -16,6 +17,9 @@ EnemyManager* enemyManager3;
 BulletManager* bulletManager3;
 
 Health* health3;
+
+FinalEnemy* finalEnemy;
+
 
 Level3Scene::Level3Scene(SDL_Renderer* renderer, Game* game)
 {
@@ -39,15 +43,15 @@ void Level3Scene::init()
 
 	bulletManager3 = new BulletManager("assets/bullet.png", renderer);
 	bulletManager3->setMap(map3);
-	std::cout << "Bullet manager initializat\n";
 	player3->setBulletManager(bulletManager3);
 
-	enemyManager3 = new EnemyManager("assets/finalZombie.png", renderer);
+	enemyManager3 = new EnemyManager("assets/zombie.png", renderer);
 	enemyManager3->setMap(map3);
 	enemyManager3->setBulletManager(bulletManager3);
 	enemyManager3->init(lvl, player3);
-
-	std::cout << "Enemy manager initializat\n";
+	finalEnemy = new FinalEnemy("assets/finalZombie.png", renderer);
+	finalEnemy->init(352, 352, player3, map3, bulletManager3);
+	
 }
 
 void Level3Scene::update()
@@ -56,12 +60,10 @@ void Level3Scene::update()
 		player3->update();
 	else
 		player3->setTex("assets/deadPlayer.png");
-	std::cout << "Player update\n";
 	health3->update();
 	enemyManager3->update();
-	std::cout << "Enemy manager update\n";
 	bulletManager3->update();
-	std::cout << "Bullet manager update\n";
+	finalEnemy->update();
 }
 
 void Level3Scene::draw()
@@ -73,6 +75,7 @@ void Level3Scene::draw()
 	health3->draw();
 	enemyManager3->draw();
 	bulletManager3->draw();
+	finalEnemy->draw();
 
 	SDL_RenderPresent(renderer);
 }
@@ -80,16 +83,18 @@ void Level3Scene::draw()
 void Level3Scene::handleEvents(SDL_Event& event)
 {
 
-	if (event.type == SDL_KEYDOWN)
+	switch (event.key.keysym.sym)
 	{
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_ESCAPE:
-			Scene* scene = new MainMenuScene(renderer, game);
-			scene->init();
-			game->setScene(scene);
-			break;
+	case SDLK_ESCAPE:
+	{
+		Scene* scene = new MainMenuScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+	}
+	break;
 
-		}
+	default:
+		player3->handleEvent(event);
+		break;
 	}
 }

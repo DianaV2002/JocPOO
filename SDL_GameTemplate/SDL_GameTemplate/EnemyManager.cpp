@@ -59,16 +59,12 @@ void EnemyManager::init(int lvl, Player* player)
 		allEnemies[0]->init(160, 160);
 		allEnemies[1]->init(224, 224);
 		allEnemies[2]->init(320, 320);
-		allEnemies[3]->init(352, 352);
+		allEnemies[3]->init(32, 630);
 		allEnemies[4]->init(352, 352);
-		allEnemies[5]->init(352, 352);
+		allEnemies[5]->init(332, 352);
 		allEnemies[6]->init(352, 352);
 
-		finalEnemy = new FinalEnemy(path,renderer);
-		finalEnemy->setTarget(player);
-		finalEnemy->setMap(map);
-
-		finalEnemy->init(160, 160);
+	
 	}
 }
 void EnemyManager::clear()
@@ -76,6 +72,7 @@ void EnemyManager::clear()
 	for (int i = 0; i < n; i++)
 		delete allEnemies[i];
 	delete[] allEnemies;
+
 }
 
 void swap(Enemy*& e1, Enemy*& e2)
@@ -88,19 +85,13 @@ void swap(Enemy*& e1, Enemy*& e2)
 
 void EnemyManager::update()
 {
-		for (int i = 0; i < n; i++)
-			if (allEnemies[i]->playerCollision())
-			{
-				
+	
+	for (int i = 0; i < n; i++)
+		if (allEnemies[i]->playerCollision())
+		{
 				target->loseHealth();
 				deleteEnemy(i);
-			}
-			/*else if (finalEnemy->playerCollision())
-			{
-				target->loseHealth();
-				finalEnemy->loseHealth();
-			}
-			*/
+		}
 			else
 			{
 				bool enemyDead = false;
@@ -112,17 +103,11 @@ void EnemyManager::update()
 						bulletManager->deleteBullet(j);
 						enemyDead = true;
 					}
-					/*if (this->bulletCollision(bulletManager->getAllBullets()[j], finalEnemy))
-					{
-						finalEnemy->loseHealth();
-						bulletManager->deleteBullet(j);
-					}
-					*/
 				}
 
 				if (enemyDead == false)
 					allEnemies[i]->update();
-				//std::cout << "Enemy " << i << " updated\n";
+		
 			}
 	
 	
