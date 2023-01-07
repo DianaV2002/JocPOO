@@ -1,11 +1,18 @@
 class Enemy;
 #include "Level2Scene.h"
+class YouWinScene;
+class Map;
+class MainMenuScene;
+class Player;
+#include "YouWinScene.h"
 #include "Map.h"
 #include "Player.h"
 #include "EnemyManager.h"
 #include "Health.h"
 #include "MainMenuScene.h"
 #include <iostream>
+#include <fstream>
+using std::ofstream;
 
 Map* map2;
 
@@ -58,8 +65,17 @@ void Level2Scene::update()
 		player2->setTex("assets/deadPlayer.png");
 	std::cout << "Player update\n";
 	health2->update();
-	enemyManager2->update();
-	std::cout << "Enemy manager update\n";
+	if (enemyManager2->getNumberEnemies())
+		enemyManager2->update();
+	else
+	{
+		ofstream fileLevel("assets/Levels.txt");
+		fileLevel << 2;
+		Scene* scene = new YouWinScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+		fileLevel.close();
+	}
 	bulletManager2->update();
 	std::cout << "Bullet manager update\n";
 }
@@ -71,7 +87,8 @@ void Level2Scene::draw()
 	map2->DrawMap();
 	player2->draw();
 	health2->draw();
-	enemyManager2->draw();
+	if (enemyManager2->getNumberEnemies())
+		enemyManager2->draw();
 	bulletManager2->draw();
 
 	SDL_RenderPresent(renderer);

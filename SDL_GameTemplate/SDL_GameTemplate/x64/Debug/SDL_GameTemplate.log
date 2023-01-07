@@ -1,5 +1,5 @@
-﻿  MainMenuScene.cpp
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): warning C4473: 'printf' : not enough arguments passed for format string
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): message : placeholders and their parameters expect 2 variadic arguments, but 0 were provided
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): message : the missing variadic argument 1 is required by format string '%s'
+﻿  Level1Scene.cpp
+  Level2Scene.cpp
+  YouWinScene.cpp
+  Generating Code...
   SDL_GameTemplate.vcxproj -> C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\x64\Debug\SDL_GameTemplate.exe

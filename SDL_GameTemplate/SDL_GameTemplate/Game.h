@@ -16,6 +16,7 @@ public:
 	void clean() const;
 	bool running() const { return isRunning;  }
 	void setScene(Scene* scene);
+	Scene* getScene();
 private:
 	Scene* scene;
 	bool isRunning;

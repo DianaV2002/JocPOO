@@ -7,11 +7,16 @@
 class Game;
 class Button;
 #include "Button.h"
+#include<fstream>
+#include <iostream>
+using std::ifstream;
 
 class YouWinScene:public Scene
 {
 	Button* backMain;
+	Button* nextLevel;
 	SDL_Texture* backMainTex;
+	SDL_Texture* nextLevelTex;
 	SDL_Renderer* renderer;
 	Game* game;
 	int Mx = 0;//coord mouse

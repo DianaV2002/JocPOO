@@ -1,4 +1,5 @@
 #include "YouWinScene.h"
+
 YouWinScene::YouWinScene(SDL_Renderer* renderer, Game* game)
 {
 	this->renderer = renderer;
@@ -14,10 +15,12 @@ void YouWinScene::init()
 	src.y = 0;
 	dest.w = 96;
 	dest.h = 96;
+	dest.y = dest.h;
 	dest.x = width / 2 - dest.w / 2;
-	dest.y = height / 4 - dest.h / 2;
-	backMain = new Button("assets/backToMainMeniu.png", renderer, src, dest);
-
+	dest.y += 4 * dest.h;
+	backMain = new Button("assets/backToMainMenu.png", renderer, src, dest);
+	dest.y -=  dest.h;
+	nextLevel= new Button("assets/nextLevel2.png", renderer, src, dest);
 
 }
 void YouWinScene::update()
@@ -28,11 +31,17 @@ void YouWinScene::draw()
 {
 	SDL_RenderClear(renderer);
 	backMain->Render();
+	nextLevel->Render();
+	std::cout << "you win draw";
+
 	SDL_RenderPresent(renderer);
 }
 void YouWinScene::handleEvents(SDL_Event& event)
 {
+
 	bool playBack = false;
+	bool playNext = false;
+
 	SDL_GetMouseState(&Mx, &My);
 	if (backMain->InsideButton(Mx, My))
 	{
@@ -48,10 +57,52 @@ void YouWinScene::handleEvents(SDL_Event& event)
 		}
 
 	}
+	if (nextLevel->InsideButton(Mx, My))
+	{
+		SDL_SetTextureColorMod(nextLevelTex, 250, 0, 0);
+
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{    //if it is pressed then play1 becomes true which you could use to initiate the newgame
+				playNext = true;
+			}
+
+		}
+
+	}
+	std::cout << "you win handle\n";
 	if (playBack)
 	{
 		MainMenuScene* scene = new MainMenuScene(renderer, game);
 		scene->init();
 		game->setScene(scene);
+	}
+	if (playNext)
+	{
+		int lvl;
+		ifstream fileLevel("assets/Levels.txt");
+		fileLevel >> lvl;
+			if (lvl == 1)
+			{
+				Level2Scene* scene = new Level2Scene(renderer, game);
+				scene->init();
+				game->setScene(scene);
+			}
+	
+			if (lvl == 2)
+			{
+				Level3Scene* scene = new Level3Scene(renderer, game);
+				scene->init();
+				game->setScene(scene);
+			}
+			if (lvl == 3)
+			{
+				MainMenuScene* scene = new MainMenuScene(renderer, game);
+				scene->init();
+				game->setScene(scene);
+			}
+
+			fileLevel.close();
 	}
 }

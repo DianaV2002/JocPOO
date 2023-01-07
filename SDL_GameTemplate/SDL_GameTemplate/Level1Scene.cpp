@@ -6,6 +6,9 @@
 #include "MainMenuScene.h"
 #include <iostream>
 #include "YouWinScene.h"
+#include<iostream>
+#include<fstream>
+using std::ofstream;
 
 Map* map;
 
@@ -63,9 +66,12 @@ void Level1Scene::update()
 	enemyManager->update();
 	else
 	{
-		YouWinScene* scene = new YouWinScene(renderer, game);
+		ofstream fileLevel("assets/Levels.txt");
+		fileLevel << 1;
+		Scene* scene = new YouWinScene(renderer, game);
 		scene->init();
 		game->setScene(scene);
+		fileLevel.close();
 		
 	}
 	//std::cout << "Enemy manager update\n";

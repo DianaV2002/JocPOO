@@ -23,14 +23,14 @@ void MainMenuScene::init()
 	easy = new Button("assets/easy.png", renderer, src, dest);
 	std::cout << easy;
 	dest.y += dest.h;
-	exit = new Button("assets/medium.png", renderer, src, dest);
+	medium=new Button("assets/medium.png", renderer, src, dest);
 	src.h = src.w = 32;
 
 	dest.w = dest.h;
 	dest.y += dest.h;
-	medium = new Button("assets/hard.png", renderer, src, dest);
+	hard = new Button("assets/hard.png", renderer, src, dest);
 	dest.y += dest.h;
-	hard = new Button("assets/exit.png", renderer, src, dest);
+	exit = new Button("assets/exit.png", renderer, src, dest);
 	
 			
 }

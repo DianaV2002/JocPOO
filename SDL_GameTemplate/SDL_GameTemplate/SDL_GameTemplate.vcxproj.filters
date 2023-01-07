@@ -158,6 +158,9 @@
     <Image Include="assets\backToMainMenu.png">
       <Filter>assets</Filter>
     </Image>
+    <Image Include="assets\nextLevel2.png">
+      <Filter>assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="assets">
@@ -172,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\Map1.TXT">
+      <Filter>assets</Filter>
+    </Text>
+    <Text Include="assets\Levels.TXT">
       <Filter>assets</Filter>
     </Text>
   </ItemGroup>

@@ -103,3 +103,7 @@ void Game::clean() const
 	SDL_QUIT;
 	std::cout << "Game cleaned" << std::endl;
 }
+Scene* Game::getScene()
+{
+	return scene;
+}

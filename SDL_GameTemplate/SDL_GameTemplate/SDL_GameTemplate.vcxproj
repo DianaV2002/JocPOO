@@ -187,9 +187,11 @@
     <Image Include="assets\hard.png" />
     <Image Include="assets\health.png" />
     <Image Include="assets\medium.png" />
+    <Image Include="assets\nextLevel2.png" />
     <Image Include="assets\wall.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="assets\Levels.TXT" />
     <Text Include="assets\Map1.TXT" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
