@@ -111,7 +111,8 @@ void FinalEnemy::update()
 	{
 		if (health)
 			this->loseHealth();
-		else this->deleteFinalEnemy();
+		else 
+			this->deleteFinalEnemy();
 		target->loseHealth();
 	}
 	for (int j = 0; j < bulletManager->getNumberBullets(); j++)
@@ -216,10 +217,15 @@ void FinalEnemy::loseHealth()
 	health--;
 	
 }
+bool FinalEnemy::isAlive()
+{
+	return  health > 0;
+}
 void FinalEnemy::deleteFinalEnemy()
 {
-	if (health == 0)
-		delete this;
+	if(this != nullptr)
+		if (health == 0)
+			delete this;
 }
 bool FinalEnemy::bulletCollision(Bullet* bullet)
 {

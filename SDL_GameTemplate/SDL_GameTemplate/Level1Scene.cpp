@@ -5,6 +5,7 @@
 #include "Health.h"
 #include "MainMenuScene.h"
 #include <iostream>
+#include "YouWinScene.h"
 
 Map* map;
 
@@ -58,7 +59,15 @@ void Level1Scene::update()
 	//std::cout << "Player update\n";
 	health->update();
 	//std::cout << "Health update\n";
+	if(enemyManager->getNumberEnemies())
 	enemyManager->update();
+	else
+	{
+		YouWinScene* scene = new YouWinScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+		
+	}
 	//std::cout << "Enemy manager update\n";
 	bulletManager->update();
 	//std::cout << "Bullet manager update\n";
@@ -72,6 +81,7 @@ void Level1Scene::draw()
 	map->DrawMap();
 	player->draw();
 	health->draw();
+	if (enemyManager->getNumberEnemies())
 	enemyManager->draw();
 	bulletManager->draw();
 	//std::cout << "DESEN\n";

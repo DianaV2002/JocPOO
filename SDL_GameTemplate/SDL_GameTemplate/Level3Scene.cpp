@@ -63,7 +63,8 @@ void Level3Scene::update()
 	health3->update();
 	enemyManager3->update();
 	bulletManager3->update();
-	finalEnemy->update();
+	if(finalEnemy->isAlive())
+		finalEnemy->update();
 }
 
 void Level3Scene::draw()
@@ -75,7 +76,8 @@ void Level3Scene::draw()
 	health3->draw();
 	enemyManager3->draw();
 	bulletManager3->draw();
-	finalEnemy->draw();
+	if (finalEnemy->isAlive())
+		finalEnemy->draw();
 
 	SDL_RenderPresent(renderer);
 }

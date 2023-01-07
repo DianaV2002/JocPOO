@@ -1,10 +1,5 @@
-﻿  Game.cpp
-  MainMenuScene.cpp
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(169,10): warning C4473: 'printf' : not enough arguments passed for format string
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(169,10): message : placeholders and their parameters expect 2 variadic arguments, but 0 were provided
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(169,10): message : the missing variadic argument 1 is required by format string '%s'
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(177,11): warning C4473: 'printf' : not enough arguments passed for format string
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(177,11): message : placeholders and their parameters expect 2 variadic arguments, but 0 were provided
-C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(177,11): message : the missing variadic argument 1 is required by format string '%s'
-  Generating Code...
+﻿  MainMenuScene.cpp
+C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): warning C4473: 'printf' : not enough arguments passed for format string
+C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): message : placeholders and their parameters expect 2 variadic arguments, but 0 were provided
+C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\SDL_GameTemplate\MainMenuScene.cpp(168,12): message : the missing variadic argument 1 is required by format string '%s'
   SDL_GameTemplate.vcxproj -> C:\Users\Diana\Desktop\JocPOOgit\JocPOO\SDL_GameTemplate\x64\Debug\SDL_GameTemplate.exe

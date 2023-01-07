@@ -10,7 +10,6 @@ class Button;
 
 class MainMenuScene :public Scene
 {
-	SDL_Window* Window = NULL;
 	//The surface contained by the window
 	SDL_Surface* ScreenSurface = NULL;
 	//The image we will load and show on the screen
@@ -19,7 +18,6 @@ class MainMenuScene :public Scene
 	SDL_Texture* levelEasy;
 	SDL_Texture* levelMedium;
 	SDL_Texture* levelHard;
-	SDL_Rect srcRect{};
 	Button* easy;
 	Button* medium;
 	Button* hard;

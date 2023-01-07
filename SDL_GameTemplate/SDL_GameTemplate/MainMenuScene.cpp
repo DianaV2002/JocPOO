@@ -10,61 +10,45 @@ MainMenuScene::MainMenuScene(SDL_Renderer* renderer, Game* game)
 void MainMenuScene::init()
 {
 
-	/*SDL_Rect src, dest;
-	src.h = 32;
-	src.w = 32;
+	SDL_Rect src, dest;
+	src.h = 96;
+	src.w = 96;
 	src.x = 0;
 	src.y = 0;
-	dest.w = 32;
-	dest.h = 32;
+	dest.w = 96;
+	dest.h = 96;
 	dest.x = width / 2 - dest.w / 2;
 	dest.y = height / 4 - dest.h / 2;
 	
-	Button* easy = new Button("assets/easy.png", renderer, src, dest);
-	dest.y = height / 2 + dest.h / 2;
-	Button * quit = new Button("assets/exit.png", renderer, src, dest);
+	easy = new Button("assets/easy.png", renderer, src, dest);
+	std::cout << easy;
+	dest.y += dest.h;
+	exit = new Button("assets/medium.png", renderer, src, dest);
 	src.h = src.w = 32;
 
 	dest.w = dest.h;
-	dest.x = width / 2 - dest.w / 2;
-	dest.y = height / 4 - dest.h / 2;
-	Button* medium = new Button("assets/medium.png", renderer, src, dest);
-	dest.y = height / 2 - dest.h / 2;
-	Button* hard = new Button("assets/hard.png", renderer, src, dest);
-	*/
-			
-			Window = SDL_CreateWindow("Main menu", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		
-			//Initialize PNG loading
-			int imgFlags = IMG_INIT_PNG;
-			if (!(IMG_Init(imgFlags) & imgFlags))
-			{
-				printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
-				
-			}
-			else
-			{
-				//Get window surface
-				ScreenSurface = SDL_GetWindowSurface(Window);
-			}
-		
+	dest.y += dest.h;
+	medium = new Button("assets/hard.png", renderer, src, dest);
+	dest.y += dest.h;
+	hard = new Button("assets/exit.png", renderer, src, dest);
 	
-
-	ScreenSurface = this->loadSurface("assets/background.png");
-
-
+			
 }
+
 void MainMenuScene::update()
 {
 	std::cout << "Update main menu\n";
 }
+
 void MainMenuScene::draw()
 {
+	SDL_RenderClear(renderer);
 	easy->Render();
 	medium->Render();
 	hard->Render();
 	exit->Render();
-	std::cout << "Main menu\n";
+	std::cout << "Main menu draw\n";
+	SDL_RenderPresent(renderer);
 	
 }
 void MainMenuScene::handleEvents(SDL_Event& event)
@@ -162,24 +146,37 @@ SDL_Surface* MainMenuScene:: loadSurface(const char* path)
 	//The final optimized image
 	SDL_Surface* optimizedSurface = NULL;
 
-	//Load image at specified path
-	SDL_Surface* background = IMG_Load(path);
-	if (background == NULL)
+	try
 	{
-		printf("Unable to load image %s! SDL_image Error: %s\n");
-	}
-	else
-	{
-		//Convert surface to screen format
-		optimizedSurface = SDL_ConvertSurface(background, ScreenSurface->format, 0);
-		if (optimizedSurface == NULL)
-		{
-			printf("Unable to optimize image %s! SDL Error: %s\n");
-		}
 
-		//Get rid of old loaded surface
-		SDL_FreeSurface(background);
+		//Load image at specified path
+		std::cout << "inainte image load\n";
+		SDL_Surface* background = IMG_Load(path);
+		std::cout << "dupa image load\n";
+		if (background == NULL)
+		{
+			std::cout << "dupa image load2\n";
+			std::cout << "Unable to load image %s! SDL_image Error: %s\n";
+		}
+		else
+		{
+			
+			//Convert surface to screen format
+			optimizedSurface = SDL_ConvertSurface(background, ScreenSurface->format, 0);
+			if (optimizedSurface == NULL)
+			{
+				printf("Unable to optimize image %s! SDL Error: %s\n");
+			}
+
+			//Get rid of old loaded surface
+			SDL_FreeSurface(background);
+		}
 	}
+	catch(...)
+	{
+		std::cout << "Mare exceptie\n";
+	}
+	
 
 	return optimizedSurface;
 }

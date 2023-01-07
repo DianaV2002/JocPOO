@@ -52,6 +52,9 @@
     <ClCompile Include="Level2Scene.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="YouWinScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -108,6 +111,9 @@
     <ClInclude Include="Level3Scene.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="YouWinScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\plantPlayer.png">
@@ -147,6 +153,9 @@
       <Filter>assets</Filter>
     </Image>
     <Image Include="assets\finalZombie.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\backToMainMenu.png">
       <Filter>assets</Filter>
     </Image>
   </ItemGroup>

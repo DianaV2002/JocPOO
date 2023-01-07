@@ -31,6 +31,8 @@ public:
 
 	void loseHealth();
 
+	bool isAlive();
+
 	bool bulletCollision(Bullet*);
 
 	void deleteFinalEnemy();
