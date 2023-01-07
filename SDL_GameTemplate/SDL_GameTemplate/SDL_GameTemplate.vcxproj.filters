@@ -55,6 +55,9 @@
     <ClCompile Include="YouWinScene.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="YouLoseScene.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h">
@@ -114,6 +117,9 @@
     <ClInclude Include="YouWinScene.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="YouLoseScene.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\Downloads\plantPlayer.png">
@@ -159,6 +165,15 @@
       <Filter>assets</Filter>
     </Image>
     <Image Include="assets\nextLevel2.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\winner.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\replay.png">
+      <Filter>assets</Filter>
+    </Image>
+    <Image Include="assets\loser.png">
       <Filter>assets</Filter>
     </Image>
   </ItemGroup>

@@ -6,6 +6,7 @@
 #include "MainMenuScene.h"
 #include <iostream>
 #include "YouWinScene.h"
+#include "YouLoseScene.h"
 #include<iostream>
 #include<fstream>
 using std::ofstream;
@@ -58,7 +59,15 @@ void Level1Scene::update()
 	if (player->isAlive())
 		player->update();
 	else
+	{
 		player->setTex("assets/deadPlayer.png");
+		ofstream fileLevel("assets/Levels.txt");
+		fileLevel << 1;
+		Scene* scene = new YouLoseScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+		fileLevel.close();
+	}
 	//std::cout << "Player update\n";
 	health->update();
 	//std::cout << "Health update\n";

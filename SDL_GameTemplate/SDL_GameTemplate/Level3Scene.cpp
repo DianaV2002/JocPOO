@@ -1,12 +1,19 @@
 class Enemy;
 #include "Level3Scene.h"
 #include "Map.h"
+class Map;
+class Player;
+class EnemyManager;
+class MainMenuScene;
+#include"YouWinScene.h"
 #include "Player.h"
 #include "EnemyManager.h"
 #include "Health.h"
 #include "MainMenuScene.h"
 #include <iostream>
 #include "FinalEnemy.h"
+#include <fstream>
+using std::ofstream;
 
 Map* map3;
 
@@ -61,7 +68,17 @@ void Level3Scene::update()
 	else
 		player3->setTex("assets/deadPlayer.png");
 	health3->update();
-	enemyManager3->update();
+	if (enemyManager3->getNumberEnemies())
+		enemyManager3->update();
+	else
+	{
+		ofstream fileLevel("assets/Levels.txt");
+		fileLevel << 3;
+		Scene* scene = new YouWinScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+		fileLevel.close();
+	}
 	bulletManager3->update();
 	if(finalEnemy->isAlive())
 		finalEnemy->update();
@@ -74,6 +91,7 @@ void Level3Scene::draw()
 	map3->DrawMap();
 	player3->draw();
 	health3->draw();
+	if(enemyManager3->getNumberEnemies())
 	enemyManager3->draw();
 	bulletManager3->draw();
 	if (finalEnemy->isAlive())

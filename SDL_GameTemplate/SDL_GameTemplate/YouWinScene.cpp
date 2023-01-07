@@ -21,6 +21,8 @@ void YouWinScene::init()
 	backMain = new Button("assets/backToMainMenu.png", renderer, src, dest);
 	dest.y -=  dest.h;
 	nextLevel= new Button("assets/nextLevel2.png", renderer, src, dest);
+	dest.y -= dest.h;
+	winner= new Button("assets/winner.png", renderer, src, dest);
 
 }
 void YouWinScene::update()
@@ -32,6 +34,7 @@ void YouWinScene::draw()
 	SDL_RenderClear(renderer);
 	backMain->Render();
 	nextLevel->Render();
+	winner->Render();
 	std::cout << "you win draw";
 
 	SDL_RenderPresent(renderer);

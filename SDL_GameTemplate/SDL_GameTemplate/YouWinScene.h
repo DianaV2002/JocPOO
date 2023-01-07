@@ -15,8 +15,10 @@ class YouWinScene:public Scene
 {
 	Button* backMain;
 	Button* nextLevel;
+	Button* winner;
 	SDL_Texture* backMainTex;
 	SDL_Texture* nextLevelTex;
+	SDL_Texture* winnerTex;
 	SDL_Renderer* renderer;
 	Game* game;
 	int Mx = 0;//coord mouse

@@ -150,6 +150,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="YouLoseScene.cpp" />
     <ClCompile Include="YouWinScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="YouLoseScene.h" />
     <ClInclude Include="YouWinScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +188,12 @@
     <Image Include="assets\grass.png" />
     <Image Include="assets\hard.png" />
     <Image Include="assets\health.png" />
+    <Image Include="assets\loser.png" />
     <Image Include="assets\medium.png" />
     <Image Include="assets\nextLevel2.png" />
+    <Image Include="assets\replay.png" />
     <Image Include="assets\wall.png" />
+    <Image Include="assets\winner.png" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\Levels.TXT" />
