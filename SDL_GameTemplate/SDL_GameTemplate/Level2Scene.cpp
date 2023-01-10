@@ -78,12 +78,16 @@ void Level2Scene::update()
 		enemyManager2->update();
 	else
 	{
-		ofstream fileLevel("assets/Levels.txt");
-		fileLevel << 2;
-		Scene* scene = new YouWinScene(renderer, game);
-		scene->init();
-		game->setScene(scene);
-		fileLevel.close();
+		//lucru cu fisiere2
+		if (player2->isAlive())
+		{
+			ofstream fileLevel("assets/Levels.txt");
+			fileLevel << 2;
+			Scene* scene = new YouWinScene(renderer, game);
+			scene->init();
+			game->setScene(scene);
+			fileLevel.close();
+		}
 	}
 	bulletManager2->update();
 	std::cout << "Bullet manager update\n";

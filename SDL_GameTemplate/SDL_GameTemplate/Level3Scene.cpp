@@ -14,6 +14,7 @@ class MainMenuScene;
 #include "FinalEnemy.h"
 #include <fstream>
 #include "YouLoseScene.h"
+#include<iostream>
 using std::ofstream;
 
 Map* map3;
@@ -81,12 +82,15 @@ void Level3Scene::update()
 		enemyManager3->update();
 	else
 	{
-		ofstream fileLevel("assets/Levels.txt");
-		fileLevel << 3;
-		Scene* scene = new YouWinScene(renderer, game);
-		scene->init();
-		game->setScene(scene);
-		fileLevel.close();
+		if (player3->isAlive())
+		{
+			ofstream fileLevel("assets/Levels.txt");
+			fileLevel << 3;
+			Scene* scene = new YouWinScene(renderer, game);
+			scene->init();
+			game->setScene(scene);
+			fileLevel.close();
+		}
 	}
 	bulletManager3->update();
 	if(finalEnemy->isAlive())

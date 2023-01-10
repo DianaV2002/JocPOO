@@ -97,7 +97,7 @@
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)SDL_LIB\SDL2_ttf-2.0.14\lib\x64;$(SolutionDir)SDL_LIB\SDL2_image-2.0.3\lib\x64;$(SolutionDir)SDL_LIB\SDL2-2.0.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2_image.lib;SDL2_ttf.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

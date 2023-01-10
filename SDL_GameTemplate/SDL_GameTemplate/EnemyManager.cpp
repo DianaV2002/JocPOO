@@ -40,7 +40,7 @@ void EnemyManager::init(int lvl, Player* player)
 		allEnemies[0]->init(160, 160);
 		allEnemies[1]->init(224, 224);
 		allEnemies[2]->init(320, 320);
-		allEnemies[3]->init(352, 352);
+		allEnemies[3]->init(352, 320);
 		allEnemies[4]->init(352, 352);
 		allEnemies[5]->init(352, 352);
 		allEnemies[6]->init(352, 352);
@@ -59,7 +59,7 @@ void EnemyManager::init(int lvl, Player* player)
 		allEnemies[0]->init(160, 160);
 		allEnemies[1]->init(224, 224);
 		allEnemies[2]->init(320, 320);
-		allEnemies[3]->init(32, 630);
+		allEnemies[3]->init(32, 287);
 		allEnemies[4]->init(352, 352);
 		allEnemies[5]->init(332, 352);
 		allEnemies[6]->init(352, 352);
