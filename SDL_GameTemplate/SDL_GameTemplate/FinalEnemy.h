@@ -3,7 +3,7 @@ class BulletManager;
 class Map;
 #include "Enemy.h"
 #include "BulletManager.h"
-
+//ierarhie de 3 clase
 class FinalEnemy :public Enemy {
 	BulletManager* bulletManager;
 	Player* target;

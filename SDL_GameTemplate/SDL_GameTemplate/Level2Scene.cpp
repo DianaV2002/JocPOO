@@ -12,6 +12,7 @@ class Player;
 #include "MainMenuScene.h"
 #include <iostream>
 #include <fstream>
+#include "YouLoseScene.h"
 using std::ofstream;
 
 Map* map2;
@@ -62,7 +63,15 @@ void Level2Scene::update()
 	if (player2->isAlive())
 		player2->update();
 	else
+	{
 		player2->setTex("assets/deadPlayer.png");
+		ofstream fileLevel("assets/Levels.txt");
+		fileLevel << 2;
+		Scene* scene = new YouLoseScene(renderer, game);
+		scene->init();
+		game->setScene(scene);
+		fileLevel.close();
+	}
 	std::cout << "Player update\n";
 	health2->update();
 	if (enemyManager2->getNumberEnemies())

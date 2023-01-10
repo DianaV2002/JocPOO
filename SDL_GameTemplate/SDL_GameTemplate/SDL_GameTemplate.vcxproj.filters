@@ -176,6 +176,9 @@
     <Image Include="assets\loser.png">
       <Filter>assets</Filter>
     </Image>
+    <Image Include="assets\plantsvs.png">
+      <Filter>assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="assets">

@@ -11,15 +11,20 @@ void MainMenuScene::init()
 {
 
 	SDL_Rect src, dest;
-	src.h = 96;
-	src.w = 96;
+	src.h = 128;
+	src.w = 128;
 	src.x = 0;
 	src.y = 0;
+	dest.w = 128;
+	dest.h = 128;
+	dest.x = width / 2 - dest.w/2 ;
+	dest.y = height / 4 - dest.h ;
+	plants = new Button("assets/plantsvs.png", renderer, src, dest);
+	src.h = 96;
+	src.w = 96;
 	dest.w = 96;
 	dest.h = 96;
-	dest.x = width / 2 - dest.w / 2;
-	dest.y = height / 4 - dest.h / 2;
-	
+	dest.y = height / 4 - dest.h/20;
 	easy = new Button("assets/easy.png", renderer, src, dest);
 	std::cout << easy;
 	dest.y += dest.h;
@@ -47,7 +52,7 @@ void MainMenuScene::draw()
 	medium->Render();
 	hard->Render();
 	exit->Render();
-	std::cout << "Main menu draw\n";
+	plants->Render();
 	SDL_RenderPresent(renderer);
 	
 }

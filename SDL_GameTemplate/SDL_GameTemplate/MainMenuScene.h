@@ -18,6 +18,8 @@ class MainMenuScene :public Scene
 	SDL_Texture* levelEasy;
 	SDL_Texture* levelMedium;
 	SDL_Texture* levelHard;
+	SDL_Texture* plantsTex;
+	Button* plants;
 	Button* easy;
 	Button* medium;
 	Button* hard;

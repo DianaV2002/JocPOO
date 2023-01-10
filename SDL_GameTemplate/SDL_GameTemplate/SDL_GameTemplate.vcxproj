@@ -191,6 +191,7 @@
     <Image Include="assets\loser.png" />
     <Image Include="assets\medium.png" />
     <Image Include="assets\nextLevel2.png" />
+    <Image Include="assets\plantsvs.png" />
     <Image Include="assets\replay.png" />
     <Image Include="assets\wall.png" />
     <Image Include="assets\winner.png" />
