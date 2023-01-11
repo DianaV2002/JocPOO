@@ -143,9 +143,6 @@
     <Image Include="assets\health.png">
       <Filter>assets</Filter>
     </Image>
-    <Image Include="assets\background.jpg">
-      <Filter>assets</Filter>
-    </Image>
     <Image Include="assets\easy.png">
       <Filter>assets</Filter>
     </Image>

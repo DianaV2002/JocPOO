@@ -82,7 +82,7 @@ void Level3Scene::update()
 		enemyManager3->update();
 	else
 	{
-		if (player3->isAlive())
+		if (player3->isAlive()&&!finalEnemy->isAlive())
 		{
 			ofstream fileLevel("assets/Levels.txt");
 			fileLevel << 3;

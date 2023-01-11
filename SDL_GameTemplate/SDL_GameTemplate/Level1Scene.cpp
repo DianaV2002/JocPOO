@@ -79,11 +79,13 @@ void Level1Scene::update()
 			//lucru cu fisiere
 		{
 			ofstream fileLevel("assets/Levels.txt");
-			fileLevel << 1;
-			Scene* scene = new YouWinScene(renderer, game);
-			scene->init();
-			game->setScene(scene);
-			fileLevel.close();
+				
+				fileLevel << 1;
+				Scene* scene = new YouWinScene(renderer, game); //polimorfism clasa scene parinte
+				scene->init();
+				game->setScene(scene);
+				fileLevel.close();
+		
 		}
 	}
 	//std::cout << "Enemy manager update\n";
