@@ -137,7 +137,7 @@ void MainMenuScene::handleEvents(SDL_Event& event)
 	}
 	if (playExit)
 	{
-		game->clean();
+		delete game;
 	}
 
 }
